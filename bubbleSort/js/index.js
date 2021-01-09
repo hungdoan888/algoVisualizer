@@ -9,16 +9,24 @@ function generateBlocks(num = 20) {
   for (let i = 0; i < num; i += 1) {
     const value = Math.floor(Math.random() * 100);
 
+    // Block
     const block = document.createElement("div");
     block.classList.add("block");
-    block.style.height = value + "%";
-    block.style.width = 100 / num + "%";
+    block.style.width = 90 / num + "%";  // leave (100 - 90 = 10%) for margins
 
+    // Color Bar
+    const colorBar = document.createElement("div");
+    colorBar.classList.add("colorBar");
+    colorBar.style.height = value + "%";
+    block.appendChild(colorBar);
+
+    // Block Label
     const blockLabel = document.createElement("label");
     blockLabel.classList.add("block__id");
     blockLabel.innerHTML = value;
     block.appendChild(blockLabel);
 
+    // Container
     container.appendChild(block);
   }
 }

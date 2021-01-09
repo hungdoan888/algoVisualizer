@@ -9,19 +9,27 @@
 }
 
 .data-container {
-  width: 50vw;
   height: 50vh;
-  margin: 0 auto;
+  text-align: center;
 }
 
 .block {
   display: inline-block;
   float: left bottom;
-  background-color: #58b7ff;
+  height: 100%;
+  margin: 0.2%;
   transition: 0.2s all ease;
 }
 
+.colorBar {
+  float: left bottom;
+  width: 100%;
+  background-color: #58b7ff;
+}
+
 .block__id {
-  float: left;
+  float: left bottom;
+  width: 100%;
   text-align: center;
+  font-size: 70%;
 }
