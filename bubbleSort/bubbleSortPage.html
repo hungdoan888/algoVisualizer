@@ -47,10 +47,26 @@
 							<header class="align-center">
 								<h2>Bubble Sort</h2>
 							</header>
-							<div class="UserInput">
-							</div>
+
+							<!-- User Input -->
+							<div class="UserInput"></div>
+
+							<!-- Visualization and Code-->
 							<div class="bubbleSortBody">
-								<section class="data-container"></section>
+								<div class="data-container"></div>
+								<div class="codeSection">
+									<p class="code" id="code0">def bubbleSort(array):</p>
+									<p class="code" id="code1" style="text-indent: 20px">isSorted = False</p>
+									<p class="code" id="code2" style="text-indent: 20px">counter = 0</p>
+									<p class="code" id="code3" style="text-indent: 20px">while not isSorted:</p>
+									<p class="code" id="code4" style="text-indent: 40px">isSorted = True</p>
+									<p class="code" id="code5" style="text-indent: 40px">for i in range(len(array) - 1 - counter):</p>
+									<p class="code" id="code6" style="text-indent: 60px">if array[i] > array[i + 1]:</p>
+									<p class="code" id="code7" style="text-indent: 80px">array[i], array[i + 1] = array[i + 1], array[i]</p>
+									<p class="code" id="code8" style="text-indent: 80px">isSorted = False</p>
+									<p class="code" id="code9" style="text-indent: 40px">counter += 1</p>
+									<p class="code" id="code10" style="text-indent: 20px">return array</p>
+								</div>
 							</div>
 						</div>
 					</div>
