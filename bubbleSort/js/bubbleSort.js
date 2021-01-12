@@ -46,7 +46,7 @@ function generateBlocks(num = 20) {
 async function bubbleSort() {
 
   // Define Variables
-  let delay = 10
+  let delay = 100
   let isSorted = false;
   let counter = 0;
   let blocks = document.querySelectorAll(".block");
