@@ -9,6 +9,10 @@ const container = document.querySelector(".data-container");
 // -----------------
 
 function generateBlocks(num = 20) {
+
+  // Delete all nodes in container
+  deteNodesInContainer();
+
   if (num && typeof num !== "number") {
     alert("First argument must be a typeof Number");
     return;
@@ -36,6 +40,12 @@ function generateBlocks(num = 20) {
 
     // Container
     container.appendChild(block);
+  }
+}
+
+function deteNodesInContainer() {
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
   }
 }
 
@@ -133,7 +143,5 @@ function swap(el2, el1) {
 // Main -
 // ------
 
-generateBlocks(num = 20)
-bubbleSort()
-
+document.getElementById("randomButton").onclick = generateBlocks();
 

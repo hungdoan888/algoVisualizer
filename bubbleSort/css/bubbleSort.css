@@ -4,6 +4,16 @@
   font-size: 150%;
 }
 
+#two {
+  padding: 2%;
+}
+.Uinput {
+  display: inline-block;
+  float: left;
+  margin: 0.5%;
+  width: 48% !important;
+}
+
 .data-container {
   display: inline-block;
   float: left;
@@ -52,7 +62,26 @@
   color: #ffffff
 }
 
+#footer {
+  display: none;
+}
+
+fieldset {
+  border:1px solid #f2f2f2;
+  width: 30%;
+}
+
+@media screen and (min-width: 600px) {
+  .blockLabel {
+    color: #444444
+  }
+}
+
 @media screen and (min-width: 980px) {
+  .code {
+    font-size: 100%;
+    color: #a6a6a6
+  }
   .data-container {
     height: 50vh;
     width: 49%;
@@ -62,7 +91,10 @@
     width: 50%;
   }
 
-  .blockLabel {
-    color: #444444
+  #footer {
+    display: block;
+    position: absolute;
+    width: 100%;
+    bottom: -65%;
   }
 }
