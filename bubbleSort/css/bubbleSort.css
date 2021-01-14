@@ -7,6 +7,14 @@
 #two {
   padding: 2%;
 }
+
+fieldset {
+  display: inline-block;
+  border:1px solid #f2f2f2;
+  width: 100%;
+  margin-left: 1%;
+}
+
 .Uinput {
   display: inline-block;
   float: left;
@@ -14,10 +22,18 @@
   width: 48% !important;
 }
 
+.spaceTime {
+  padding: 0.3%
+}
+
+.playReset{
+  width: 100% !important;
+}
+
 .data-container {
   display: inline-block;
-  float: left;
-  height: 25vh;
+  float: left bottom;
+  height: 125px;
   width: 100%;
   text-align: center;
   margin-bottom: 4%;
@@ -26,7 +42,7 @@
 .codeSection {
   display: inline-block;
   width: 100%;
-  height: 50vh;
+  height: 50%;
   text-align: center;
   background-color: #f2f2f2;
 }
@@ -46,7 +62,7 @@
   display: inline-block;
   float: left bottom;
   height: 100%;
-  margin: 0.2%;
+  padding: 0.2%;
   transition: 0.2s all ease;
 }
 
@@ -62,15 +78,6 @@
   color: #ffffff
 }
 
-#footer {
-  display: none;
-}
-
-fieldset {
-  border:1px solid #f2f2f2;
-  width: 30%;
-}
-
 @media screen and (min-width: 600px) {
   .blockLabel {
     color: #444444
@@ -83,7 +90,7 @@ fieldset {
     color: #a6a6a6
   }
   .data-container {
-    height: 50vh;
+    height: 250px;
     width: 49%;
   }
 
@@ -91,10 +98,15 @@ fieldset {
     width: 50%;
   }
 
-  #footer {
-    display: block;
-    position: absolute;
-    width: 100%;
-    bottom: -65%;
+  fieldset {
+    width: 25%;
+  }
+
+  .visualize {
+    width: 12.5%;
+  }
+
+  .spaceTime {
+    width: 15%;
   }
 }

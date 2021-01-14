@@ -49,12 +49,56 @@
 					<!-- User Input -->
 					<div class="UserInput">
 						<form>
-							<fieldset>
-								<legend>Generate Blocks</legend>
-								<input type="text" name="random" class="Uinput" id="random" value="" placeholder="20" />
-								<input type="button" id="randomButton" class="button special Uinput" value="Generate Random" onclick="generateBlocks()"/>
-								<input type="text" name="array" class="Uinput" id="array" value="" placeholder="[1, 2, 3, 4, 5]" />
-								<input type="button" id="arrayButton" class="button special Uinput" value="Generate Array" onclick="bubbleSort()"/>
+							<!-- Generate Blocks fieldset -->
+							<fieldset class="gererateBlocks">
+								<legend>1. Generate Blocks</legend>
+								<input type="text" name="random" class="Uinput" id="random" value="" placeholder="20" pattern = "[0-9]{3}" required />
+								<input type="button" id="randomButton" class="button special Uinput" value="Random" onclick="randomBlocks()"/>
+								<input type="text" name="array" class="Uinput" id="array" value="" placeholder="1, 2, 3, 4, 5" />
+								<input type="button" id="arrayButton" class="button special Uinput" value="Array" onclick="arrayBlocks()"/>
+							</fieldset>
+
+							<!-- Options Field Set -->
+							<fieldset class="options">
+								<legend>2. Options</legend>
+								<div class="4u 12u$(small) Uinput">
+									<input type="radio" id="radioPlay" name="playStep" checked>
+									<label for="radioPlay">Play</label>
+								</div>
+								<div class="4u 12u$(small) Uinput">
+									<input type="radio" id="radioStep" name="playStep">
+									<label for="radioStep">Step</label>
+								</div>
+								<div class="6u 12u$(small) Uinput">
+									<input type="checkbox" id="showLines" name="showLines" checked>
+									<label for="showLines">Display Active Lines</label>
+								</div>
+								<div class="12u$ Uinput" >
+									<div class="select-wrapper">
+										<select name="Speed" id="Speed">
+											<option value="">- Speed -</option>
+											<option value="1">x1</option>
+											<option value="2">x2</option>
+											<option value="3">x4</option>
+											<option value="4">x8</option>
+										</select>
+									</div>
+								</div>
+							</fieldset>
+
+							<!-- Play fieldset -->
+							<fieldset class="visualize">
+								<legend>3. Visualize</legend>
+								<input type="button" id="visualize" class="button special Uinput playReset" value="visualize" onclick="bubbleSort()"/>
+								<input type="button" id="reset" class="button special Uinput playReset" value="reset"/>
+							</fieldset>
+							
+							<fieldset class="spaceTime">
+								<legend>Space and Time Complexity</legend>
+								<ul>
+									<li>Time: O(n^2)</li>
+									<li>Space: O(1)</li>
+								</ul>
 							</fieldset>
 						</form>
 					</div>
@@ -62,7 +106,7 @@
 					<!-- Visualization and Code-->
 					<div class="bubbleSortBody">
 						<div class="data-container"></div>
-						<div class="codeSection">
+						<div class="codeSection" id="codeSection">
 							<p class="code" id="code0">def bubbleSort(array):</p>
 							<p class="code" id="code1" style="text-indent: 20px">isSorted = False</p>
 							<p class="code" id="code2" style="text-indent: 20px">counter = 0</p>
