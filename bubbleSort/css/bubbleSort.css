@@ -11,8 +11,9 @@
 fieldset {
   display: inline-block;
   border:1px solid #f2f2f2;
+  min-height: 150px;
   width: 100%;
-  margin-left: 1%;
+  margin-left: 2%;
 }
 
 .Uinput {
@@ -20,10 +21,6 @@ fieldset {
   float: left;
   margin: 0.5%;
   width: 48% !important;
-}
-
-.spaceTime {
-  padding: 0.3%
 }
 
 .playReset{
@@ -39,11 +36,19 @@ fieldset {
   margin-bottom: 4%;
 }
 
-.codeSection {
+.code-container{
   display: inline-block;
   width: 100%;
   height: 50%;
-  text-align: center;
+}
+
+.spaceTime {
+  margin: 0;
+  width: 100%;
+}
+
+.codeSection {
+  width: 100%;
   background-color: #f2f2f2;
 }
 
@@ -94,7 +99,7 @@ fieldset {
     width: 49%;
   }
 
-  .codeSection {
+  .code-container {
     width: 50%;
   }
 
@@ -104,9 +109,5 @@ fieldset {
 
   .visualize {
     width: 12.5%;
-  }
-
-  .spaceTime {
-    width: 15%;
   }
 }

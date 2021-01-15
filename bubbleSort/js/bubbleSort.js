@@ -3,6 +3,7 @@
 // ---------------
 
 const container = document.querySelector(".data-container");
+var waitingForStep = true;
 
 // ---------------
 // Random Blocks -
@@ -10,6 +11,7 @@ const container = document.querySelector(".data-container");
 
 function randomBlocks() {
   var num = parseInt(document.getElementById("random").value);
+
   if (!Number.isInteger(num)) {
     alert("Invalid Input: Integer Required");
     return;
@@ -75,7 +77,6 @@ function generateBlocks(array) {
 
   for (let i = 0; i < array.length; i++) {
     const value = array[i] / Math.max(...array) * 100;
-    console.log(Math.max(...array))
 
     // Block
     const block = document.createElement("div");
@@ -105,6 +106,14 @@ function deleteNodesInContainer() {
   }
 }
 
+function initialBlocksOnStartUp() {
+  array = []
+  for (let i = 1; i <= 20; i++) {
+    array.push(i)
+  }
+  generateBlocks(array)
+}
+
 // -------------
 // Bubble Sort -
 // -------------
@@ -123,6 +132,7 @@ async function bubbleSort() {
   await changeCodeColorWithDelay("code1", delay)
   await changeCodeColorWithDelay("code2", delay)
   await changeCodeColorWithDelay("code3", delay)
+  await step()
 
   while (!isSorted) {
     isSorted = true;
@@ -185,7 +195,7 @@ function changeCodeColor(id) {
 function changeCodeColorWithDelay(id, delay) {
   return new Promise(resolve =>
     setTimeout(() => {
-      changeCodeColor(id)
+      changeCodeColor(id);
       resolve();
     }, delay)
   );
@@ -196,3 +206,16 @@ function swap(el2, el1) {
     container.insertBefore(el2, el1);
 }
 
+// --------
+// Timing -
+// --------
+    
+function stepClicked() {
+  waitingForStep = false;
+}
+
+// ------
+// Main -
+// ------
+
+initialBlocksOnStartUp()
