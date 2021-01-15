@@ -132,7 +132,6 @@ async function bubbleSort() {
   await changeCodeColorWithDelay("code1", delay)
   await changeCodeColorWithDelay("code2", delay)
   await changeCodeColorWithDelay("code3", delay)
-  await step()
 
   while (!isSorted) {
     isSorted = true;
