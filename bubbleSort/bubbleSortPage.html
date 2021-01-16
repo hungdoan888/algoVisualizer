@@ -52,35 +52,27 @@
 							<!-- Generate Blocks fieldset -->
 							<fieldset class="gererateBlocks">
 								<legend>1. Generate Blocks</legend>
-								<input type="text" name="random" class="Uinput" id="random" value="" placeholder="20" pattern = "[0-9]{3}" required />
-								<input type="button" id="randomButton" class="button special Uinput" value="Random" onclick="randomBlocks()"/>
-								<input type="text" name="array" class="Uinput" id="array" value="" placeholder="1, 2, 3, 4, 5" />
-								<input type="button" id="arrayButton" class="button special Uinput" value="Array" onclick="arrayBlocks()"/>
+								<input type="text" name="random" class="UiGenerate" id="random" value="" placeholder="20" pattern = "[0-9]{3}" required />
+								<input type="button" id="randomButton" class="button special UiGenerate" value="Random" onclick="randomBlocks()"/>
+								<input type="text" name="array" class="UiGenerate" id="array" value="" placeholder="[1, 2, 3, 4, 5]" />
+								<input type="button" id="arrayButton" class="button special UiGenerate" value="Array" onclick="arrayBlocks()"/>
 							</fieldset>
 
 							<!-- Options Field Set -->
 							<fieldset class="options">
 								<legend>2. Options</legend>
-								<div class="4u 12u$(small) Uinput">
-									<input class="optionsSpecial" type="radio" id="radioPlay" name="playStep" checked>
-									<label class="optionsSpecial" for="radioPlay">Play</label>
-								</div>
-								<div class="4u 12u$(small) Uinput">
-									<input class="optionsSpecial" type="radio" id="radioStep" name="playStep">
-									<label class="optionsSpecial" for="radioStep">Step</label>
-								</div>
-								<div class="6u 12u$(small) Uinput">
+								<div class="6u 12u$(small) UiOptions">
 									<input class="optionsSpecial" type="checkbox" id="showLines" name="showLines" checked>
 									<label class="optionsSpecial" for="showLines">Display Active Lines</label>
 								</div>
-								<div class="12u$ Uinput" >
+								<div class="12u$ UiOptions" >
 									<div class="select-wrapper">
 										<select name="Speed" id="Speed">
 											<option value="">- Speed -</option>
-											<option value="1">x1</option>
-											<option value="2">x2</option>
-											<option value="3">x4</option>
-											<option value="4">x8</option>
+											<option value="x1">x1</option>
+											<option value="x2">x2</option>
+											<option value="x4">x4</option>
+											<option value="x8">x8</option>
 										</select>
 									</div>
 								</div>
@@ -89,8 +81,10 @@
 							<!-- Play fieldset -->
 							<fieldset class="visualize">
 								<legend>3. Visualize</legend>
-								<input type="button" id="visualize" class="button special Uinput playReset" value="visualize" onclick="bubbleSort()"/>
-								<input type="button" id="reset" class="button special Uinput playReset" value="reset" onclick="stepClicked()"/>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="play1()"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClicked1()"/>
+								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClicked1()"/>
+								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="initialBlocksOnStartUp()"/>
 							</fieldset>
 						</form>
 					</div>

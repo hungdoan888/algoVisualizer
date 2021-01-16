@@ -16,15 +16,23 @@ fieldset {
   margin-left: 2%;
 }
 
-.Uinput {
+.UiGenerate {
   display: inline-block;
   float: left;
   margin: 0.5%;
   width: 48% !important;
 }
 
-.playReset{
+.UiOptions {
+  margin: 0.5%;
   width: 100% !important;
+}
+
+.UiVisualize{
+  display: inline-block;
+  float: left;
+  margin: 0.5%;
+  width: 48% !important;
 }
 
 .data-container {
@@ -104,10 +112,14 @@ fieldset {
   }
 
   fieldset {
-    width: 25%;
+    width: 37%;
   }
 
-  .visualize {
-    width: 12.5%;
+  fieldset.first {
+    margin-left: 0;
+  }
+
+  .options {
+    width: 18.5%;
   }
 }

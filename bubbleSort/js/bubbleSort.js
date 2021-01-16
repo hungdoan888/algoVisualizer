@@ -3,7 +3,10 @@
 // ---------------
 
 const container = document.querySelector(".data-container");
-var waitingForStep = true;
+var codeRunning = false;  // play, step
+var stepClicked = false;  // step
+var waitingForStep = true;  // step
+var pauseClicked = false;  //pause
 
 // ---------------
 // Random Blocks -
@@ -46,7 +49,11 @@ function changeLabelsToWhiteIfMoreThan20 () {
 // Array -
 // -------
 function arrayBlocks() {
-  let array = document.getElementById("array").value;
+  var array = document.getElementById("array").value;
+  // Remove backets if they are there
+  array = array.replace("[", "")
+  array = array.replace("]", "")
+
   array = array.split(",")
   for (let i = 0; i < array.length; i++) {
     const value = parseInt(array[i])
@@ -72,6 +79,13 @@ function arrayBlocks() {
 // -----------------
 
 function generateBlocks(array) {
+
+  // Resetting Variables
+  codeRunning = false;  // play, step
+  stepClicked = false;  // step
+  waitingForStep = true;  // step
+  pauseClicked = false;  //pause
+  
   // Delete all nodes in container
   deleteNodesInContainer();
 
@@ -107,7 +121,7 @@ function deleteNodesInContainer() {
 }
 
 function initialBlocksOnStartUp() {
-  array = []
+  var array = []
   for (let i = 1; i <= 20; i++) {
     array.push(i)
   }
@@ -121,23 +135,22 @@ function initialBlocksOnStartUp() {
 async function bubbleSort() {
 
   // Define Variables
-  let delay = 100
   let isSorted = false;
   let counter = 0;
   let blocks = document.querySelectorAll(".block");
   let colorBar = document.querySelectorAll(".colorBar");
   let blockLabel = document.querySelectorAll(".blockLabel");
 
-  await changeCodeColorWithDelay("code0", delay)
-  await changeCodeColorWithDelay("code1", delay)
-  await changeCodeColorWithDelay("code2", delay)
-  await changeCodeColorWithDelay("code3", delay)
+  await changeCodeColorWithDelay("code0")
+  await changeCodeColorWithDelay("code1")
+  await changeCodeColorWithDelay("code2")
+  await changeCodeColorWithDelay("code3")
 
   while (!isSorted) {
     isSorted = true;
 
-    await changeCodeColorWithDelay("code4", delay)
-    await changeCodeColorWithDelay("code5", delay)
+    await changeCodeColorWithDelay("code4")
+    await changeCodeColorWithDelay("code5")
 
     for (let i = 0; i < blocks.length - 1 - counter; i += 1) {
       
@@ -146,7 +159,7 @@ async function bubbleSort() {
       colorBar[i+1].style.backgroundColor = "#FF4949";
 
       // Swap if block[i] > block[i+1]
-      await changeCodeColorWithDelay("code6", delay)
+      await changeCodeColorWithDelay("code6")
       if (Number(blockLabel[i].innerHTML) > Number(blockLabel[i+1].innerHTML)) {
         swap(blocks[i+1], blocks[i]) 
         blocks = document.querySelectorAll(".block");
@@ -154,8 +167,8 @@ async function bubbleSort() {
         blockLabel = document.querySelectorAll(".blockLabel"); 
         isSorted = false
 
-        await changeCodeColorWithDelay("code7", delay)
-        await changeCodeColorWithDelay("code8", delay)
+        await changeCodeColorWithDelay("code7")
+        await changeCodeColorWithDelay("code8")
       }
 
       // Change Color back to blue
@@ -167,7 +180,7 @@ async function bubbleSort() {
     colorBar[blocks.length - 1 - counter].style.backgroundColor = "#13CE66";
     counter += 1
 
-    await changeCodeColorWithDelay("code9", delay)
+    await changeCodeColorWithDelay("code9")
   }
 
   // Color remaining elements green
@@ -175,23 +188,48 @@ async function bubbleSort() {
     colorBar[i].style.backgroundColor = "#13CE66";
   }
 
-await changeCodeColorWithDelay("code10", delay)
+await changeCodeColorWithDelay("code10")
 }
 
 
 function changeCodeColor(id) {
+
   let codeLines = document.querySelectorAll(".codeSection");
   let numLinesCode = document.getElementById("codeSection").childElementCount;
   for (let i = 0; i < numLinesCode; i++) {
     document.getElementById("code" + i).style.backgroundColor  = "#f2f2f2";
     document.getElementById("code" + i).style.color = "#a6a6a6";
   }
-  document.getElementById(id).style.backgroundColor  = "#3a424a";
-  document.getElementById(id).style.color = "#b0e686";
+
+  // Check to see if display active lines is checked
+  if (document.getElementById("showLines").checked) {
+    document.getElementById(id).style.backgroundColor  = "#3a424a";
+    document.getElementById(id).style.color = "#b0e686";
+  }
 }
 
 
-function changeCodeColorWithDelay(id, delay) {
+async function changeCodeColorWithDelay(id) {
+  // If in step mode, wait for next step to be clicked
+  if (stepClicked) {
+    while (waitingForStep) {
+      await waiting()
+    }
+    waitingForStep = true
+  }
+
+  // Paused
+  if (pauseClicked) {
+    while (waitingForStep) {
+      await waiting()
+    }
+    waitingForStep = true
+  }
+
+  // Delay
+  speedTime();
+
+  // Change Color of Bars
   return new Promise(resolve =>
     setTimeout(() => {
       changeCodeColor(id);
@@ -205,16 +243,77 @@ function swap(el2, el1) {
     container.insertBefore(el2, el1);
 }
 
+// -------
+// Speed -
+// -------
+
+function speedTime() {
+  let value = document.getElementById("Speed").value;
+  if (value == "x1") {
+    delay = 200;
+  } else if (value == "x2") {
+    delay = 100;
+  } else if (value == "x4") {
+    delay = 50;
+  } else if (value == "x8") {
+    delay = 25;
+  } else {
+    delay = 400;
+  }
+}
+
 // --------
 // Timing -
 // --------
-    
-function stepClicked() {
+
+// play
+function play1() {
+  stepClicked = false;
   waitingForStep = false;
+  pauseClicked = false;
+  console.log("Play Clicked")
+
+  if (!codeRunning) {
+    bubbleSort()
+    codeRunning = true
+  }
+}
+
+// step
+function waiting() {
+  return new Promise(resolve =>
+    setTimeout(() => {
+      resolve();
+    }, 10)
+  );
+}
+
+function stepClicked1() {
+  stepClicked = true;
+  waitingForStep = false;
+  pauseClicked = false;
+  console.log("Step Clicked")
+
+  if (!codeRunning) {
+    bubbleSort()
+    codeRunning = true;
+  }
+}
+
+// pause
+function pauseClicked1() {
+  pauseClicked = true;
+  waitingForStep = true;
+  console.log("Pause Clicked")
+}
+
+// reset
+function reset1() {
+  window.location.reload();
 }
 
 // ------
 // Main -
 // ------
 
-initialBlocksOnStartUp()
+initialBlocksOnStartUp();
