@@ -32,6 +32,13 @@ async function bubbleSort() {
       await changeCodeColorWithDelay("code6")
       if (Number(blockLabel[i].innerHTML) > Number(blockLabel[i+1].innerHTML)) {
         swap(blocks[i+1], blocks[i]) 
+
+          if (reset) {  // reset comes from gernal functions
+          console.log("Function returned");
+          codeRunning = false;  // This variable comes from general functions
+          return
+        }
+
         blocks = document.querySelectorAll(".block");
         colorBar = document.querySelectorAll(".colorBar");
         blockLabel = document.querySelectorAll(".blockLabel"); 
@@ -59,4 +66,5 @@ async function bubbleSort() {
   }
 
 await changeCodeColorWithDelay("code10")
+codeRunning = false;  // This variable comes from general functions
 }

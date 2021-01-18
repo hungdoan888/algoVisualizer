@@ -25,7 +25,7 @@
 				<ul class="links">
 					<li><a href="index.html">Bubble Sort</a></li>
 					<li><a href="insertionSort.html">Insertion Sort</a></li>
-					<li><a href="../elements.html">Elements</a></li>
+					<li><a href="selectionSort.html">Selection Sort</a></li>
 				</ul>
 			</nav>
 
@@ -81,10 +81,10 @@
 							<!-- Play fieldset -->
 							<fieldset class="visualize">
 								<legend>3. Visualize</legend>
-								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="play1()"/>
-								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClicked1()"/>
-								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClicked1()"/>
-								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="initialBlocksOnStartUp()"/>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(bubbleSort)"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(bubbleSort)"/>
+								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClickedButton()"/>
+								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="resetClickedButton()"/>
 							</fieldset>
 						</form>
 					</div>
@@ -129,6 +129,7 @@
 			<script src="./assets/js/skel.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+			<script src="./assets/js/generalFunctions.js"></script>
 			<script src="./assets/js/bubbleSort.js"></script>
 
 	</body>

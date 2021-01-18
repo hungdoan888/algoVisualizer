@@ -15,6 +15,8 @@ var reset = false;  // reset
 
 function randomBlocks() {
 
+  console.log("Random Pressed")
+
   // Generate Random Blocks
   var num = parseInt(document.getElementById("random").value);
 
@@ -53,6 +55,9 @@ function changeLabelsToWhiteIfMoreThan20 () {
 // --------------
 
 function arrayBlocks() {
+
+  console.log("Array Pressed")
+
   var array = document.getElementById("array").value;
   // Remove backets if they are there
   array = array.replace("[", "")
@@ -81,13 +86,20 @@ function arrayBlocks() {
 // Generate Blocks -
 // -----------------
 
-function generateBlocks(array) {
+async function generateBlocks(array) {
+
+  // Wait for previous code to return
+  reset = true;  // reset
+  stepClicked = false;  // step
+  waitingForStep = false;  // step
+  pauseClicked = false;  // pause
+  while (codeRunning) {
+    await waiting()
+  }
 
   // Resetting Variables
   codeRunning = false;  // play, step
-  stepClicked = false;  // step
   waitingForStep = true;  // step
-  pauseClicked = false;  //pause
   reset =false;  // reset
   
   // Delete all nodes in container
@@ -195,7 +207,6 @@ async function changeCodeColorWithDelay(id) {
 function swap(el2, el1) {
   // Swap
   container.insertBefore(el2, el1);
-  return reset
 }
 
 // -------
@@ -230,8 +241,8 @@ function playClickedButton(function2play) {
   console.log("Play Clicked");
 
   if (!codeRunning) {
-    function2play()
-    codeRunning = true
+    function2play();
+    codeRunning = true;
   }
 }
 
@@ -251,7 +262,7 @@ function stepClickedButton(function2play) {
   console.log("Step Clicked");
 
   if (!codeRunning) {
-    function2play()
+    function2play();
     codeRunning = true;
   }
 }
@@ -264,9 +275,10 @@ function pauseClickedButton() {
 }
 
 // reset
-function stopClickedButton() {
-  console.log("Stop Pressed")
+function resetClickedButton() {
+  console.log("Reset Pressed")
   reset = true;
+  initialBlocksOnStartUp();
 }
 
 // ------

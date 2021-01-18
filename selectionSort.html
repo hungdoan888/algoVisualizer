@@ -43,7 +43,7 @@
 			<section id="two" class="wrapper">
 				<div class="content">
 					<header class="align-center">
-						<h2>Insertion Sort</h2>
+						<h2>Selection Sort</h2>
 					</header>
 
 					<!-- User Input -->
@@ -81,8 +81,8 @@
 							<!-- Play fieldset -->
 							<fieldset class="visualize">
 								<legend>3. Visualize</legend>
-								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(insertionSort)"/>
-								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(insertionSort)"/>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(selectionSort)"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(selectionSort)"/>
 								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClickedButton()"/>
 								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="resetClickedButton()"/>
 							</fieldset>
@@ -95,13 +95,14 @@
 						<div class="code-container">
 							<p class="spaceTime">Time: O(n<sup>2</sup>) | Space: O(1)</p>
 							<div class="codeSection" id="codeSection">
-								<p class="code" id="code0">def insertionSort(array):</p>
-								<p class="code" id="code1" style="text-indent: 20px">for i in range(1, len(array)):</p>
-								<p class="code" id="code2" style="text-indent: 40px">j = i</p>
-								<p class="code" id="code3" style="text-indent: 40px">while j > 0 and array[j] < array[j-1]:</p>
-								<p class="code" id="code4" style="text-indent: 60px">array[j], array[j-1] = array[j-1], array[j]</p>
-								<p class="code" id="code5" style="text-indent: 60px">j -= 1</p>
-								<p class="code" id="code6" style="text-indent: 20px">return array</p>
+								<p class="code" id="code0">def selectionSort(array):</p>
+								<p class="code" id="code1" style="text-indent: 20px">for i in range(len(array)):</p>
+								<p class="code" id="code2" style="text-indent: 40px">smallestIdx = i</p>
+								<p class="code" id="code3" style="text-indent: 40px">for j in range(i + 1, len(array)):</p>
+								<p class="code" id="code4" style="text-indent: 60px">if array[j] < array[smallestIdx]:</p>
+								<p class="code" id="code5" style="text-indent: 80px">smallestIdx = j</p>
+								<p class="code" id="code6" style="text-indent: 40px">array[i], array[smallestIdx] = array[smallestIdx], array[i]</p>
+								<p class="code" id="code7" style="text-indent: 20px">return array</p>
 							</div>
 						</div>
 					</div>
@@ -126,7 +127,7 @@
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
 			<script src="./assets/js/generalFunctions.js"></script>
-			<script src="./assets/js/insertionSort.js"></script>
+			<script src="./assets/js/selectionSort.js"></script>
 
 	</body>
 </html>

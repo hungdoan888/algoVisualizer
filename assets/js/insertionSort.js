@@ -32,10 +32,11 @@ async function insertionSort() {
       await changeCodeColorWithDelay("code5");
 
       // swap
-      resetPressed = swap(blocks[j], blocks[j-1]);
+      swap(blocks[j], blocks[j-1]);
 
-      if (resetPressed) {
-        console.log("insertion Sort returned");
+      if (reset) {  // reset comes from gernal functions
+        console.log("Function returned");
+        codeRunning = false;  // This variable comes from general functions
         return
       }
 
@@ -56,4 +57,5 @@ async function insertionSort() {
     }
   }
   await changeCodeColorWithDelay("code6")
+  codeRunning = false;  // This variable comes from general functions
 }
