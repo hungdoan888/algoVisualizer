@@ -6,98 +6,130 @@
 -->
 <html>
 	<head>
-		<title>Algo Visualizer</title>
+		<title>Algo Visualizer by Hung Doan</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/main.css" />
+		<link rel="stylesheet" href="./assets/css/style.css" />
 	</head>
-	<body>
+	<body class="subpage">
 
 		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">Algo Visualizer <span>by HUNG DOAN</span></a></div>
+			<header id="header">
+				<div class="logo"><a href="index.html">Algo Visualizer <span>by Hung Doan</span></a></div>
 				<a href="#menu">Menu</a>
 			</header>
 
 		<!-- Nav -->
 			<nav id="menu">
 				<ul class="links">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="generic.html">Generic</a></li>
-					<li><a href="elements.html">Elements</a></li>
+					<li><a href="index.html">Bubble Sort</a></li>
+					<li><a href="insertionSort.html">Insertion Sort</a></li>
+					<li><a href="../elements.html">Elements</a></li>
 				</ul>
 			</nav>
 
-		<!-- Banner -->
-			<section class="banner full">
-				<article>
-					<img src="images/sums.jpg" alt="" />
-					<div class="inner">
-						<header>
-							<p>Two Number Sum | Three Number Sum | Four Number Sum</p>
-							<h2>Sums</h2>
-						</header>
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Bubble Sort | Insertion Sort | Selection Sort | Three Number Sort</p>
+						<h2>Sorting</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper">
+				<div class="content">
+					<header class="align-center">
+						<h2>Bubble Sort</h2>
+					</header>
+
+					<!-- User Input -->
+					<div class="UserInput">
+						<form>
+							<!-- Generate Blocks fieldset -->
+							<fieldset class="gererateBlocks">
+								<legend>1. Generate Blocks</legend>
+								<input type="text" name="random" class="UiGenerate" id="random" value="" placeholder="20" pattern = "[0-9]{3}" required />
+								<input type="button" id="randomButton" class="button special UiGenerate" value="Random" onclick="randomBlocks()"/>
+								<input type="text" name="array" class="UiGenerate" id="array" value="" placeholder="[1, 2, 3, 4, 5]" />
+								<input type="button" id="arrayButton" class="button special UiGenerate" value="Array" onclick="arrayBlocks()"/>
+							</fieldset>
+
+							<!-- Options Field Set -->
+							<fieldset class="options">
+								<legend>2. Options</legend>
+								<div class="6u 12u$(small) UiOptions">
+									<input class="optionsSpecial" type="checkbox" id="showLines" name="showLines" checked>
+									<label class="optionsSpecial" for="showLines">Display Active Lines</label>
+								</div>
+								<div class="12u$ UiOptions" >
+									<div class="select-wrapper">
+										<select name="Speed" id="Speed">
+											<option value="">- Speed -</option>
+											<option value="x1">x1</option>
+											<option value="x2">x2</option>
+											<option value="x4">x4</option>
+											<option value="x8">x8</option>
+										</select>
+									</div>
+								</div>
+							</fieldset>
+
+							<!-- Play fieldset -->
+							<fieldset class="visualize">
+								<legend>3. Visualize</legend>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="play1()"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClicked1()"/>
+								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClicked1()"/>
+								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="initialBlocksOnStartUp()"/>
+							</fieldset>
+						</form>
 					</div>
-				</article>
-				<article>
-					<img src="images/bubbleSort2.jpg" alt="" />
-					<div class="inner">
-						<header>
-							<p>Bubble Sort | Insertion Sort | Selection Sort | Three Number Sort</p>
-							<h2>Sorting</h2>
-						</header>
+
+					<!-- Visualization and Code-->
+					<div class="bubbleSortBody">
+						<div class="data-container"></div>
+						<div class="code-container">
+							<p class="spaceTime">Time: O(n<sup>2</sup>) | Space: O(1)</p>
+							<div class="codeSection" id="codeSection">
+								<p class="code" id="code0">def bubbleSort(array):</p>
+								<p class="code" id="code1" style="text-indent: 20px">isSorted = False</p>
+								<p class="code" id="code2" style="text-indent: 20px">counter = 0</p>
+								<p class="code" id="code3" style="text-indent: 20px">while not isSorted:</p>
+								<p class="code" id="code4" style="text-indent: 40px">isSorted = True</p>
+								<p class="code" id="code5" style="text-indent: 40px">for i in range(len(array) - 1 - counter):</p>
+								<p class="code" id="code6" style="text-indent: 60px">if array[i] > array[i + 1]:</p>
+								<p class="code" id="code7" style="text-indent: 80px">array[i], array[i + 1] = array[i + 1], array[i]</p>
+								<p class="code" id="code8" style="text-indent: 80px">isSorted = False</p>
+								<p class="code" id="code9" style="text-indent: 40px">counter += 1</p>
+								<p class="code" id="code10" style="text-indent: 20px">return array</p>
+							</div>
+						</div>
 					</div>
-				</article>
-				<article>
-					<img src="images/graphs.jpg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Depth-first Search | Breadth-first Search | River Sizes</p>
-							<h2>Graphs</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/binaryTree.jpg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Node Depths | Invert Binary Tree | Find Successor</p>
-							<h2>Binary Trees</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/linkedList2.jpeg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Find Loop | Reverse Linked List | Merge Linked List</p>
-							<h2>Linked Lists</h2>
-						</header>
-					</div>
-				</article>
+				</div>
 			</section>
 
 		<!-- Footer -->
 			<footer id="footer">
 				<div class="container">
 					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+						<li><a href="https://www.linkedin.com/in/hungdoan888/" class="icon fa-linkedin" target="_blank"><div class="myMedia">hungdoan888</div></a></li>
+						<li><a href="https://github.com/hungdoan888" class="icon fa-github" target="_blank"><div class="myMedia">hungdoan888</div></a></li>
 					</ul>
-				</div>
-				<div class="copyright">
-					&copy; Untitled. All rights reserved.
 				</div>
 			</footer>
 
+
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="./assets/js/jquery.min.js"></script>
+			<script src="./assets/js/jquery.scrollex.min.js"></script>
+			<script src="./assets/js/skel.min.js"></script>
+			<script src="./assets/js/util.js"></script>
+			<script src="./assets/js/main.js"></script>
+			<script src="./assets/js/bubbleSort.js"></script>
 
 	</body>
 </html>

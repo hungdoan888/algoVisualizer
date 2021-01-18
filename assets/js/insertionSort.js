@@ -1,3 +1,54 @@
+// -------------
+// Bubble Sort -
+// -------------
+
+async function insertionSort() {
+
+  // Define Variables
+  let blocks = document.querySelectorAll(".block");
+  let colorBar = document.querySelectorAll(".colorBar");
+  let blockLabel = document.querySelectorAll(".blockLabel");
+
+  await changeCodeColorWithDelay("code0")
+  await changeCodeColorWithDelay("code1")
+
+  for (let i = 1; i < blocks.length; i += 1) {
+    
+    await changeCodeColorWithDelay("code2")
+    await changeCodeColorWithDelay("code3")
+
+    let j = i;
+    while (j > 0 && Number(blockLabel[j].innerHTML) < Number(blockLabel[j - 1].innerHTML)) {
+
+      // Color boxes being Worked on Red
+      colorBar[j].style.backgroundColor = "#FF4949";
+      colorBar[j-1].style.backgroundColor = "#FF4949";
+
+      // Swap if block[j] < block[j-1]
+      await changeCodeColorWithDelay("code4")
+      await changeCodeColorWithDelay("code5")
+      swap(blocks[j], blocks[j-1]);
+
+      // Change Color back to blue
+      colorBar[j].style.backgroundColor = "#58B7FF";
+      colorBar[j-1].style.backgroundColor = "#58B7FF";
+
+      j -= 1;
+
+      // Redefine blocks and block labels
+      blocks = document.querySelectorAll(".block");
+      colorBar = document.querySelectorAll(".colorBar");
+      blockLabel = document.querySelectorAll(".blockLabel");
+    }
+
+    // Color the elements up to the ith element green
+    for (let j = i; j >= 0; j -= 1) {
+      colorBar[j].style.backgroundColor = "#13CE66";
+    }
+  }
+  await changeCodeColorWithDelay("code6")
+}
+
 // ---------------
 // Get Container -
 // ---------------
@@ -45,9 +96,10 @@ function changeLabelsToWhiteIfMoreThan20 () {
   }
 }
 
-// -------
-// Array -
-// -------
+// --------------
+// Array Blocks -
+// --------------
+
 function arrayBlocks() {
   var array = document.getElementById("array").value;
   // Remove backets if they are there
@@ -72,7 +124,6 @@ function arrayBlocks() {
   generateBlocks(array);
   changeLabelsToWhiteIfMoreThan20();
 }
-
 
 // -----------------
 // Generate Blocks -
@@ -128,69 +179,9 @@ function initialBlocksOnStartUp() {
   generateBlocks(array)
 }
 
-// -------------
-// Bubble Sort -
-// -------------
-
-async function bubbleSort() {
-
-  // Define Variables
-  let isSorted = false;
-  let counter = 0;
-  let blocks = document.querySelectorAll(".block");
-  let colorBar = document.querySelectorAll(".colorBar");
-  let blockLabel = document.querySelectorAll(".blockLabel");
-
-  await changeCodeColorWithDelay("code0")
-  await changeCodeColorWithDelay("code1")
-  await changeCodeColorWithDelay("code2")
-  await changeCodeColorWithDelay("code3")
-
-  while (!isSorted) {
-    isSorted = true;
-
-    await changeCodeColorWithDelay("code4")
-    await changeCodeColorWithDelay("code5")
-
-    for (let i = 0; i < blocks.length - 1 - counter; i += 1) {
-      
-      // Color boxes being Worked on Red
-      colorBar[i].style.backgroundColor = "#FF4949";
-      colorBar[i+1].style.backgroundColor = "#FF4949";
-
-      // Swap if block[i] > block[i+1]
-      await changeCodeColorWithDelay("code6")
-      if (Number(blockLabel[i].innerHTML) > Number(blockLabel[i+1].innerHTML)) {
-        swap(blocks[i+1], blocks[i]) 
-        blocks = document.querySelectorAll(".block");
-        colorBar = document.querySelectorAll(".colorBar");
-        blockLabel = document.querySelectorAll(".blockLabel"); 
-        isSorted = false
-
-        await changeCodeColorWithDelay("code7")
-        await changeCodeColorWithDelay("code8")
-      }
-
-      // Change Color back to blue
-      colorBar[i].style.backgroundColor = "#58B7FF";
-      colorBar[i+1].style.backgroundColor = "#58B7FF";
-    }
-
-    // Color the last element visited green
-    colorBar[blocks.length - 1 - counter].style.backgroundColor = "#13CE66";
-    counter += 1
-
-    await changeCodeColorWithDelay("code9")
-  }
-
-  // Color remaining elements green
-  for (let i = blocks.length - 1 - counter; i >= 0; i -= 1) {
-    colorBar[i].style.backgroundColor = "#13CE66";
-  }
-
-await changeCodeColorWithDelay("code10")
-}
-
+// -------------------
+// Change Code Color -
+// -------------------
 
 function changeCodeColor(id) {
 
@@ -208,6 +199,9 @@ function changeCodeColor(id) {
   }
 }
 
+// ------------------------------
+// Change Code Color With Delay -
+// ------------------------------
 
 async function changeCodeColorWithDelay(id) {
   // If in step mode, wait for next step to be clicked
@@ -274,7 +268,7 @@ function play1() {
   console.log("Play Clicked")
 
   if (!codeRunning) {
-    bubbleSort()
+    insertionSort()
     codeRunning = true
   }
 }
@@ -295,7 +289,7 @@ function stepClicked1() {
   console.log("Step Clicked")
 
   if (!codeRunning) {
-    bubbleSort()
+    insertion()
     codeRunning = true;
   }
 }
