@@ -7,12 +7,15 @@ var codeRunning = false;  // play, step
 var stepClicked = false;  // step
 var waitingForStep = true;  // step
 var pauseClicked = false;  //pause
+var reset = false;  // reset
 
 // ---------------
 // Random Blocks -
 // ---------------
 
 function randomBlocks() {
+
+  // Generate Random Blocks
   var num = parseInt(document.getElementById("random").value);
 
   if (!Number.isInteger(num)) {
@@ -85,6 +88,7 @@ function generateBlocks(array) {
   stepClicked = false;  // step
   waitingForStep = true;  // step
   pauseClicked = false;  //pause
+  reset =false;  // reset
   
   // Delete all nodes in container
   deleteNodesInContainer();
@@ -153,6 +157,12 @@ function changeCodeColor(id) {
 // ------------------------------
 
 async function changeCodeColorWithDelay(id) {
+
+  // reset
+  if (reset) {
+    return
+  }
+
   // If in step mode, wait for next step to be clicked
   if (stepClicked) {
     while (waitingForStep) {
@@ -183,7 +193,9 @@ async function changeCodeColorWithDelay(id) {
 
 
 function swap(el2, el1) {
-    container.insertBefore(el2, el1);
+  // Swap
+  container.insertBefore(el2, el1);
+  return reset
 }
 
 // -------
@@ -191,6 +203,7 @@ function swap(el2, el1) {
 // -------
 
 function speedTime() {
+
   let value = document.getElementById("Speed").value;
   if (value == "x1") {
     delay = 200;
@@ -210,19 +223,19 @@ function speedTime() {
 // --------
 
 // play
-function play1() {
+function playClickedButton(function2play) {
   stepClicked = false;
   waitingForStep = false;
   pauseClicked = false;
-  console.log("Play Clicked")
+  console.log("Play Clicked");
 
   if (!codeRunning) {
-    bubbleSort()
+    function2play()
     codeRunning = true
   }
 }
 
-// step
+// waiting function
 function waiting() {
   return new Promise(resolve =>
     setTimeout(() => {
@@ -231,28 +244,29 @@ function waiting() {
   );
 }
 
-function stepClicked1() {
+function stepClickedButton(function2play) {
   stepClicked = true;
   waitingForStep = false;
   pauseClicked = false;
-  console.log("Step Clicked")
+  console.log("Step Clicked");
 
   if (!codeRunning) {
-    bubbleSort()
+    function2play()
     codeRunning = true;
   }
 }
 
 // pause
-function pauseClicked1() {
+function pauseClickedButton() {
   pauseClicked = true;
   waitingForStep = true;
-  console.log("Pause Clicked")
+  console.log("Pause Clicked");
 }
 
 // reset
-function reset1() {
-  window.location.reload();
+function stopClickedButton() {
+  console.log("Stop Pressed")
+  reset = true;
 }
 
 // ------

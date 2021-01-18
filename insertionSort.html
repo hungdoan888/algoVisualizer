@@ -81,10 +81,10 @@
 							<!-- Play fieldset -->
 							<fieldset class="visualize">
 								<legend>3. Visualize</legend>
-								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="play1()"/>
-								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClicked1()"/>
-								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClicked1()"/>
-								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="initialBlocksOnStartUp()"/>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(insertionSort)"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(insertionSort)"/>
+								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClickedButton()"/>
+								<input type="button" id="stopButton" class="button special UiVisualize" value="stop" onclick="stopClickedButton()"/>
 							</fieldset>
 						</form>
 					</div>
@@ -125,6 +125,7 @@
 			<script src="./assets/js/skel.min.js"></script>
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
+			<script src="./assets/js/generalFunctions.js"></script>
 			<script src="./assets/js/insertionSort.js"></script>
 
 	</body>
