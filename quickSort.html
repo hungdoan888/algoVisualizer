@@ -44,7 +44,7 @@
 			<section id="two" class="wrapper">
 				<div class="content">
 					<header class="align-center">
-						<h2>Selection Sort</h2>
+						<h2>Quick Sort</h2>
 					</header>
 
 					<!-- User Input -->
@@ -82,8 +82,8 @@
 							<!-- Play fieldset -->
 							<fieldset class="visualize">
 								<legend>3. Visualize</legend>
-								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(selectionSort)"/>
-								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(selectionSort)"/>
+								<input type="button" id="playButton" class="button special UiVisualize" value="play" onclick="playClickedButton(quickSort)"/>
+								<input type="button" id="stepButton" class="button special UiVisualize" value="step" onclick="stepClickedButton(quickSort)"/>
 								<input type="button" id="pauseButton" class="button special UiVisualize" value="pause" onclick="pauseClickedButton()"/>
 								<input type="button" id="resetButton" class="button special UiVisualize" value="reset" onclick="resetClickedButton()"/>
 							</fieldset>
@@ -92,18 +92,36 @@
 
 					<!-- Visualization and Code-->
 					<div class="bubbleSortBody">
-						<div class="data-container"></div>
+						<div class="data-container" id="data-container"></div>
 						<div class="code-container">
 							<p class="spaceTime">Time: O(n<sup>2</sup>) | Space: O(1)</p>
 							<div class="codeSection" id="codeSection">
-								<p class="code" id="code0">def selectionSort(array):</p>
-								<p class="code" id="code1" style="text-indent: 20px">for i in range(len(array)):</p>
-								<p class="code" id="code2" style="text-indent: 40px">smallestIdx = i</p>
-								<p class="code" id="code3" style="text-indent: 40px">for j in range(i + 1, len(array)):</p>
-								<p class="code" id="code4" style="text-indent: 60px">if array[j] < array[smallestIdx]:</p>
-								<p class="code" id="code5" style="text-indent: 80px">smallestIdx = j</p>
-								<p class="code" id="code6" style="text-indent: 40px">array[i], array[smallestIdx] = array[smallestIdx], array[i]</p>
-								<p class="code" id="code7" style="text-indent: 20px">return array</p>
+								<p class="code" id="code0">def quickSort(array):</p>
+								<p class="code" id="code1" style="text-indent: 20px">quickSortHelper(array, 0, len(array) - 1)</p>
+								<p class="code" id="code2" style="text-indent: 20px">return array</p>
+								<p class="code" id="code3">def quickSortHelper(array, startIdx, endIdx):</p>
+								<p class="code" id="code4" style="text-indent: 20px">if startIdx > endIdx:</p>
+								<p class="code" id="code5" style="text-indent: 40px">return</p>
+								<p class="code" id="code6" style="text-indent: 20px">pivotIdx = startIdx</p>
+								<p class="code" id="code7" style="text-indent: 20px">leftIdx = startIdx + 1</p>
+								<p class="code" id="code8" style="text-indent: 20px">rightIdx = endIdx</p>
+								<p class="code" id="code9" style="text-indent: 20px">while rightIdx >= leftIdx:</p>
+								<p class="code" id="code10" style="text-indent: 40px">if array[leftIdx] > array[pivotIdx] and array[rightIdx] < array[pivotIdx]:</p>
+								<p class="code" id="code11" style="text-indent: 60px">swap(leftIdx, rightIdx, array)</p>
+								<p class="code" id="code12" style="text-indent: 40px">if array[leftIdx] <= array[pivotIdx]:</p>
+								<p class="code" id="code13" style="text-indent: 60px">leftIdx += 1</p>
+								<p class="code" id="code14" style="text-indent: 40px">if array[rightIdx] >= array[pivotIdx]:</p>
+								<p class="code" id="code15" style="text-indent: 60px">rightIdx += 1</p>
+								<p class="code" id="code16" style="text-indent: 20px">swap(pivotIdx, rightIdx, array)</p>
+								<p class="code" id="code17" style="text-indent: 20px">leftSubarrayIsSmaller = rightIdx - 1 - startIdx < endIdx - (rightIdx + 1)</p>
+								<p class="code" id="code18" style="text-indent: 20px">if leftSubarrayIsSmaller:</p>
+								<p class="code" id="code19" style="text-indent: 40px">quickSortHelper(array, startIdx, rightIdx - 1)</p>
+								<p class="code" id="code20" style="text-indent: 40px">quickSortHelper(array, rightIdx + 1, endIdx)</p>
+								<p class="code" id="code21" style="text-indent: 20px">else:</p>
+								<p class="code" id="code22" style="text-indent: 40px">quickSortHelper(array, rightIdx + 1, endIdx)</p>
+								<p class="code" id="code23" style="text-indent: 40px">quickSortHelper(array, startIdx, rightIdx - 1)</p>
+								<p class="code" id="code24">def swap(i, j, array):</p>
+								<p class="code" id="code25" style="text-indent: 20px">array[i], array[j] = array[j], array[i]</p>
 							</div>
 						</div>
 					</div>
@@ -128,7 +146,6 @@
 			<script src="./assets/js/util.js"></script>
 			<script src="./assets/js/main.js"></script>
 			<script src="./assets/js/generalFunctions.js"></script>
-			<script src="./assets/js/selectionSort.js"></script>
-
+			<script src="./assets/js/quickSort.js"></script>
 	</body>
 </html>
