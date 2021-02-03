@@ -67,7 +67,7 @@ async function quickSortHelper(startIdx, endIdx) {
       await changeCodeColorWithDelay("code13")
       colorBar[leftIdx].style.backgroundColor = "#58B7FF";  // Change Color back to blue
       leftIdx += 1
-      if (leftIdx < blocks.length) {
+      if (leftIdx < endIdx + 1) {
         colorBar[leftIdx].style.backgroundColor = "#FF4949";  // Color boxes being Worked on Red
       }
     }
@@ -98,7 +98,7 @@ async function quickSortHelper(startIdx, endIdx) {
   await changeCodeColorWithDelay("code18")
   colorBar[rightIdx].style.backgroundColor = "#13CE66";  // Color boxes being Worked on Green
   colorBar[pivotIdx].style.backgroundColor = "#58B7FF";  // Change Color back to blue
-  if (leftIdx < blocks.length) {
+  if (leftIdx < endIdx + 1) {
     colorBar[leftIdx].style.backgroundColor = "#58B7FF";  // Change Color back to blue
   }
   if (leftSubarrayIsSmaller) {
