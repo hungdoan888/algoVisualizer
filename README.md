@@ -1,4 +1,4 @@
-# algoVisualizer
+# Algo-Visualizer
 Responsive website, <a href="https://algo-visualizer.io/">Algo-Visualizer.io</a>, for visualizing sorting algorithms
 
 # Screenshots
