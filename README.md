@@ -1,5 +1,5 @@
 # algoVisualizer
-Responsive website, <a href="Algo-Visualizer.io">Algo-Visualizer.io</a>, for visualizing sorting algorithms
+Responsive website, <a href="https://algo-visualizer.io/">Algo-Visualizer.io</a>, for visualizing sorting algorithms
 
 # Screenshots
 ![Alt text](screenshot.JPG?raw=true "Screen shot of Algo-Visualizer")
