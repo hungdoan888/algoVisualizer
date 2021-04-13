@@ -2,7 +2,7 @@
 Responsive website, Algo-Visualizer.io, for visualizing sorting algorithms
 
 # Screenshots
-![Alt text](screenshot.png?raw=true "Screen shot of Algo-Visualizer")
+![Alt text](screenshot.JPG?raw=true "Screen shot of Algo-Visualizer")
 
 # Tech/framework used
 - HTML
