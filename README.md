@@ -15,9 +15,9 @@ Responsive website, Algo-Visualizer.io, for visualizing sorting algorithms
 
 # How to use
 1) Generate blocks
-  - Random or create your own
+    - Random or create your own
 2) Choose Options
-  - Speed and display
+    - Speed and display
 3) Visualize
-  - Play, pause, step, and reset
+    - Play, pause, step, and reset
   
